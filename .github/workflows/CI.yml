@@ -1,4 +1,4 @@
-name: Provision AWS VPN
+name: Provision DO test
 on:
   workflow_dispatch:
 
