@@ -1,0 +1,21 @@
+name: Provision AWS VPN
+on:
+  workflow_dispatch:
+
+jobs:
+  generate_keys:
+    name: Generate Keys
+    runs-on: ubuntu-latest
+    steps:
+    - name: Upload repo to DO
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ env.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          fingerprint: ${{ secrets.FINGERPRINT }}
+          script: |
+            mkdir ${{ env.PROJECT_DIR }}
+            cd ${{ env.PROJECT_DIR }}
+            git clone ${{ env.REPO_LINK }}
