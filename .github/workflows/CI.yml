@@ -1,20 +1,19 @@
-name: Provision DO test
-on:
-  workflow_dispatch:
+name: Deploy to DigitalOcean Droplet
+'on':
+  push:
+    branches:
+      - main
 
 jobs:
-  generate_keys:
-    name: Generate Keys
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Upload repo to DO
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ env.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_KEY }}
-        port: ${{ secrets.PORT }}
-        fingerprint: ${{ secrets.FINGERPRINT }}
-        script: |
-          cd ${{ env.PROJECT_DIR }}
-          git clone ${{ env.REPO_LINK }}
+      - name: Deploy to DigitalOcean Droplet
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USER}}
+          key: ${{secrets.SSH_KEY}}
+          script: |
+            cd ${{ env.PROJECT_DIR }}
+            git clone ${{ env.REPO_LINK }}
