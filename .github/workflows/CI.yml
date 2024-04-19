@@ -13,5 +13,5 @@ jobs:
           username: ${{secrets.SSH_USER}}
           key: ${{secrets.SSH_KEY}}
           script: |
-            cd ${{ env.PROJECT_DIR }}
-            git clone ${{ env.REPO_LINK }}
+            cd ${{ secrets.PROJECT_DIR }}
+            git clone ${{ secrets.REPO_LINK }}
