@@ -16,6 +16,5 @@ jobs:
         port: ${{ secrets.PORT }}
         fingerprint: ${{ secrets.FINGERPRINT }}
         script: |
-          mkdir ${{ env.PROJECT_DIR }}
           cd ${{ env.PROJECT_DIR }}
           git clone ${{ env.REPO_LINK }}
