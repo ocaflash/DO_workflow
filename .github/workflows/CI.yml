@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Upload repo to DO
-        uses: appleboy/ssh-action@v1.0.3
-        with:
+      uses: appleboy/ssh-action@v1.0.3
+      with:
           host: ${{ env.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
